@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Sprites/SpaceShipsPack-AntuZ/SpaceShips/G-09.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/PlayerShip.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player Ship" type="Sprite" parent="."]
+position = Vector2( 534, 326 )
+rotation = 3.14159
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Player Ship"]
+position = Vector2( -549, -288 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player Ship/KinematicBody2D"]
+position = Vector2( 549, 288 )
+polygon = PoolVector2Array( 42, -4.5, 30.9, 7.5, 28, 7.5, 28, 13.3, 24.8, 16.5, 21.4, 16.5, 17.9, 14.3, 16, 15.6, 16, 30.8, 9.5, 53.5, 8, 53.5, 6.5, 55.5, -6, 55.5, -14, 43.1, -14, 37.5, -15.9, 16.3, -19.2, 14.3, -26, 17.7, -26, 13.9, -27.6, 6.6, -32, 8.7, -32, 5.4, -42, -3.8, -42, -55.5, -41, -55.5, -33.3, -46.8, -26.7, -52.5, -22.8, -52.5, -12.5, -50.8, -10, -54.2, -10, -55.5, 10, -55.5, 10, -54, 12.1, -50.5, 12.7, -50.5, 28, -52.8, 28, -50.4, 33.7, -45.5, 41, -55.5, 42, -55.5 )
