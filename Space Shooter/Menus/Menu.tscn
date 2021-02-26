@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Fonts/title_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Sound/_release/intro.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Fonts/Rajdhani-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Menus/Menu.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sprites/SpaceBackGround.jpg" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="Menu" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -433.0
+margin_top = 50.0
+margin_right = 433.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.00392157, 0.113725, 0.839216, 1 )
+text = "Vega Fleet Onslaught"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -2250.0
+margin_top = -2250.0
+margin_right = 2250.0
+margin_bottom = 2250.0
+rect_clip_content = true
+texture = ExtResource( 5 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+margin_left = 413.533
+margin_top = 290.825
+margin_right = 613.533
+margin_bottom = 350.825
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.00392157, 0.113725, 0.839216, 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="."]
+margin_left = 413.533
+margin_top = 380.825
+margin_right = 613.533
+margin_bottom = 440.825
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.00392157, 0.113725, 0.839216, 1 )
+text = "Credits"
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 413.533
+margin_top = 470.825
+margin_right = 613.533
+margin_bottom = 530.825
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.00392157, 0.113725, 0.839216, 1 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

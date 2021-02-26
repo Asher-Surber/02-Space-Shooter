@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Fonts/game_over.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Sound/_release/death.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sprites/SpaceBackGround.jpg" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/Rajdhani-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Fonts/Font1.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Menus/Death.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Death" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+margin_left = -728.911
+margin_top = -366.574
+margin_right = 3771.09
+margin_bottom = 4133.43
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Game Over" type="Label" parent="."]
+margin_left = 283.0
+margin_top = 50.0
+margin_right = 744.0
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.768627, 0.0627451, 0.0392157, 1 )
+text = "Game Over"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="Play Again\?" type="Button" parent="."]
+margin_left = 411.5
+margin_top = 290.825
+margin_right = 611.5
+margin_bottom = 350.825
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.768627, 0.0627451, 0.0392157, 1 )
+text = "Play Again?"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Button" parent="."]
+margin_left = 411.5
+margin_top = 380.825
+margin_right = 611.5
+margin_bottom = 440.825
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.768627, 0.0627451, 0.0392157, 1 )
+text = "Credits"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 411.5
+margin_top = 470.825
+margin_right = 611.5
+margin_bottom = 530.825
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.768627, 0.0627451, 0.0392157, 1 )
+text = "Quit"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Death Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 301.528 )
+current = true
+
+[node name="FinalScore" type="Label" parent="."]
+margin_left = 470.0
+margin_top = 200.0
+margin_right = 569.0
+margin_bottom = 226.0
+custom_fonts/font = ExtResource( 5 )
+text = "Final Score: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Play Again?" to="." method="_on_Play_Again_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
