@@ -1,0 +1,176 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=1]
+[ext_resource path="res://Player/LaserSound.gd" type="Script" id=2]
+[ext_resource path="res://Player/new_PlayerShip.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/SpaceShipsPack-AntuZ/SpaceShips/G-09.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sound/laser4.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sprites/SpaceBackGround.jpg" type="Texture" id=6]
+[ext_resource path="res://Assets/Sound/_release/level2.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Enemies/Enemy2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/Enemy1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Fonts/Font1.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Player/Respawn.gd" type="Script" id=11]
+[ext_resource path="res://Player/PlayerShip.gd" type="Script" id=12]
+
+[sub_resource type="LargeTexture" id=1]
+
+[node name="Game" type="Node2D"]
+
+[node name="Respawn" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+script = ExtResource( 11 )
+
+[node name="Level 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="Background" type="Sprite" parent="."]
+show_behind_parent = true
+texture = ExtResource( 6 )
+normal_map = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Type 1 Enemies" type="Node2D" parent="Enemies"]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Enemy5" parent="Enemies/Type 1 Enemies" instance=ExtResource( 9 )]
+
+[node name="Enemy6" parent="Enemies/Type 1 Enemies" instance=ExtResource( 9 )]
+
+[node name="Enemy7" parent="Enemies/Type 1 Enemies" instance=ExtResource( 9 )]
+
+[node name="Enemy8" parent="Enemies/Type 1 Enemies" instance=ExtResource( 9 )]
+
+[node name="Enemy9" parent="Enemies/Type 1 Enemies" instance=ExtResource( 9 )]
+
+[node name="Type 2 Enemies" type="Node2D" parent="Enemies"]
+
+[node name="Enemy" parent="Enemies/Type 2 Enemies" instance=ExtResource( 8 )]
+position = Vector2( 250, 200 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Enemy2" parent="Enemies/Type 2 Enemies" instance=ExtResource( 8 )]
+position = Vector2( 750, 200 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Enemy3" parent="Enemies/Type 2 Enemies" instance=ExtResource( 8 )]
+position = Vector2( 500, 200 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Enemy4" parent="Enemies/Type 2 Enemies" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 500, 0 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Lasers"]
+stream = ExtResource( 5 )
+script = ExtResource( 2 )
+
+[node name="PlayerShip" type="Node2D" parent="."]
+position = Vector2( 500, 550 )
+script = ExtResource( 12 )
+
+[node name="PlayerShip1" type="KinematicBody2D" parent="PlayerShip"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerShip/PlayerShip1"]
+position = Vector2( -1, -2 )
+rotation = 3.14159
+scale = Vector2( 0.75, 0.75 )
+polygon = PoolVector2Array( 42, -4.5, 30.9, 7.5, 28, 7.5, 28, 13.3, 24.8, 16.5, 21.4, 16.5, 17.9, 14.3, 16, 15.6, 16, 30.8, 9.5, 53.5, 8, 53.5, 6.5, 55.5, -6, 55.5, -14, 43.1, -14, 37.5, -15.9, 16.3, -19.2, 14.3, -26, 17.7, -26, 13.9, -27.6, 6.6, -32, 8.7, -32, 5.4, -42, -3.8, -42, -55.5, -41, -55.5, -33.3, -46.8, -26.7, -52.5, -22.8, -52.5, -12.5, -50.8, -10, -54.2, -10, -55.5, 10, -55.5, 10, -54, 12.1, -50.5, 12.7, -50.5, 28, -52.8, 28, -50.4, 33.7, -45.5, 41, -55.5, 42, -55.5 )
+
+[node name="Player Ship" type="Sprite" parent="PlayerShip/PlayerShip1"]
+position = Vector2( -1, -2 )
+rotation = 3.14159
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 4 )
+
+[node name="Enemy Lasers" type="Node2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Explosions" type="Node2D" parent="."]
+
+[node name="HUD" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+margin_right = 1024.0
+margin_bottom = 40.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="Lives" type="Label" parent="HUD"]
+margin_left = 5.0
+margin_right = 305.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 10 )
+text = "Lives:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="HUD"]
+margin_left = 824.0
+margin_right = 1024.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 10 )
+text = "Score:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Life1" type="TextureRect" parent="HUD"]
+margin_left = 109.0
+margin_top = 36.0
+margin_right = 193.0
+margin_bottom = 147.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Life2" type="TextureRect" parent="HUD"]
+margin_left = 144.0
+margin_top = 36.0
+margin_right = 228.0
+margin_bottom = 147.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Life3" type="TextureRect" parent="HUD"]
+margin_left = 179.0
+margin_top = 36.0
+margin_right = 263.0
+margin_bottom = 147.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Respawn" to="PlayerShip" method="_on_Respawn_timeout"]

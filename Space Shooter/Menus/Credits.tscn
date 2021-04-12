@@ -1,8 +1,121 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Sprites/SpaceBackGround.jpg" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/title_font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/Font1.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Fonts/font_small.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Menus/Back to Title.gd" type="Script" id=5]
 
 [node name="Credits" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -698.065
+margin_top = -428.115
+margin_right = 3801.94
+margin_bottom = 4071.89
+texture = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 63.0
+margin_top = 52.0
+margin_right = 966.0
+margin_bottom = 555.0
+color = Color( 1, 1, 1, 0.109804 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="."]
+margin_left = 344.5
+margin_top = 50.0
+margin_right = 679.5
+margin_bottom = 178.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.00392157, 0.113725, 0.839216, 1 )
+text = "Credits"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameDate" type="Label" parent="."]
+margin_left = 382.0
+margin_top = 159.0
+margin_right = 640.0
+margin_bottom = 301.0
+custom_fonts/font = ExtResource( 4 )
+text = "Vega Fleet Onslaught
+
+First Release: February 2021
+
+"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List1" type="Label" parent="."]
+margin_left = 67.0
+margin_top = 242.0
+margin_right = 537.0
+margin_bottom = 527.0
+custom_fonts/font = ExtResource( 4 )
+text = "Game Design and Production: Asher Surber
+Game Programming: Asher Surber, with snippets from Jason Francis
+
+Ship and Laser Sprites: Carlos Alface
+https://opengameart.org/content/2d-space-ships-pack-war-antuz-race
+
+Laser Sound Effect: dklon
+laser4.wav, https://opengameart.org/content/laser-fire
+
+Explosion Spritesheet: Soluna Software
+Explosion03, https://opengameart.org/content/explosion-effects-and-more"
+
+[node name="List2" type="Label" parent="."]
+margin_left = 483.379
+margin_top = 242.0
+margin_right = 960.379
+margin_bottom = 527.0
+custom_fonts/font = ExtResource( 4 )
+text = "Explosion Sound Effect: TinyWorlds
+https://opengameart.org/content/explosion-0
+
+Background: Glimmervoid
+https://opengameart.org/content/space-background-6
+
+All Music: Jan125
+https://opengameart.org/content/stereotypical-90s-space-shooter-music
+intro.ogg, level1.ogg, level2.ogg, death.ogg
+
+Type Face: Rajdhani
+Copyright (c) 2014, Indian Type Foundry (info@indiantypefoundry.com)"
+align = 2
+
+[node name="Back to Title" type="Button" parent="."]
+margin_left = 104.652
+margin_top = 104.652
+margin_right = 217.652
+margin_bottom = 164.652
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.00392157, 0.113725, 0.839216, 1 )
+text = "Back to Title"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Back to Title" to="Back to Title" method="_on_Back_to_Title_pressed"]

@@ -1,13 +1,13 @@
 extends Control
-onready var Life = get_node("/root/Level1/HUD/Lives")
+onready var Life = get_node("/root/Game/HUD/Lives")
 onready var global = get_node("/root/Global")
-onready var Life1 = get_node("/root/Level1/HUD/Life1")
-onready var Life2 = get_node("/root/Level1/HUD/Life2")
-onready var Life3 = get_node("/root/Level1/HUD/Life3")
-var Explosion = load("res://Constant/Explosion.tscn")
-onready var Explosions = get_node("/root/Level1/Explosions")
-onready var Enemies = get_node("/root/Level1/Enemies")
-onready var Level2 = load("res://Level 2/Level2.tscn")
+onready var Life1 = get_node("/root/Game/HUD/Life1")
+onready var Life2 = get_node("/root/Game/HUD/Life2")
+onready var Life3 = get_node("/root/Game/HUD/Life3")
+var Explosion = load("res://Explosions/Explosion.tscn")
+onready var Explosions = get_node("/root/Game/Explosions")
+onready var Enemies = get_node("/root/Game/Enemies")
+onready var Level2 = load("res://Level2.tscn")
 #onready var Level2Node = get_node("/root/Level2")
 
 func _ready():
@@ -18,10 +18,10 @@ func _ready():
 func update_score(s):
 	global.score += s
 	$Score.text = "Score: " + str(global.score)
-	if global.score == 70:
+	if global.score == 70 and global.level != 2:
 		global.level = 2
 # warning-ignore:return_value_discarded
-		get_tree().change_scene("res://Level 2/Level2.tscn")
+		get_tree().change_scene("res://Level2.tscn")
 
 func update_lives(l):
 	global.lives += l
